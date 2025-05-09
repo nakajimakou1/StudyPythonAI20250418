@@ -4,35 +4,12 @@ import matplotlib.cm as cm
 import numpy as np
 import csv # https://reffect.co.jp/python/python-csv-manuplulate
 import pathlib
-import cv2 as cv
-
-def makemovie(img_fname):
-    ### Movie build
-    size = (0,0)
-    frame_rate = 20
-
-    #height = 800
-    #width = 1280
-    height = 400
-    width = 640
-    size = (width, height)
-    # movname = './' + file_name + '.mp4'
-    codec = cv.VideoWriter_fourcc('m','p','4','v')
-    video = cv.VideoWriter('temp.mp4', codec, frame_rate, size)
-
-    for fname in img_fname:
-        print(fname)
-        img = cv.imread(fname)
-        img = cv.resize(img, dsize=(640, 400))
-        video.write(img)
-
-    video.release()
-    
+   
 x_data = np.arange(1,10) # x軸のメモリ用
 # print(x_data)
 
 # ※np.loadtxtでは、ヘッダに文字があるとエラーとなってしまう。
-# df_raw = np.loadtxt("test3-2.csv", delimiter = ",")
+# df_raw = np.loadtxt("test2-2.csv", delimiter = ",")
 
 file_path = './test2-2.csv'
 fp = open(file_path,'r',encoding="shift-jis") #CSVファイルをオープン utf-8 cp932 shift-jis
@@ -64,16 +41,11 @@ for ylist_data in rows:
     plt.yscale('linear')    # linear     log
     plt.yticks(np.arange(0, 50001, step=10000)) # 50000 -> 50001 Max目盛りに「50000」を表示したいため
 
-    dbgdisp = False # True # False
-    if dbgdisp :
-        plt.show()
-    else:
-        # plt.show()
-        savefname = "./img/img" + ylist_data[0] + ".png"
-        # print("save File name:" + savefname + "\n")
-        plt.savefig(savefname)
-        img_fname.append(savefname)
+    plt.show()
+    savefname = "./img/img" + ylist_data[0] + ".png"
+    # print("save File name:" + savefname + "\n")
+    plt.savefig(savefname)
+    img_fname.append(savefname)
 
 fp.close()
-makemovie(img_fname)
 print("end")
