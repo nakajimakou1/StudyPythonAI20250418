@@ -34,7 +34,7 @@ x_data = np.arange(1,10) # x軸のメモリ用
 # ※np.loadtxtでは、ヘッダに文字があるとエラーとなってしまう。
 # df_raw = np.loadtxt("test3-2.csv", delimiter = ",")
 
-file_path = './test3-3.csv'
+file_path = './test2-2.csv'
 fp = open(file_path,'r',encoding="shift-jis") #CSVファイルをオープン utf-8 cp932 shift-jis
 rows = csv.reader(fp)
 header = next(rows) #header行をスキップ
