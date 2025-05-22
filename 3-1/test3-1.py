@@ -86,6 +86,14 @@ def main():
             plt.show()
         else:
             # plt.show()
+            # img フォルダが存在するかチェックしてなければ作成する。
+            if os.path.isdir("./img"):
+                # すでに存在する場合
+                pass
+            else:
+                # フォルダを作成する
+                os.makedirs("./img")
+            
             savefname = "./img/img" + str(ylist[0]) + ".png"
             # print("save File name:" + savefname + "\n")
             plt.savefig(savefname)
